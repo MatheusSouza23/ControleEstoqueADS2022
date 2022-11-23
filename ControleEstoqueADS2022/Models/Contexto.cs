@@ -11,6 +11,6 @@ namespace ControleEstoqueADS2022.Models
         public DbSet<CompraProduto> compras { get; set; }
         public DbSet<Fornecedor> fornecedores { get; set; }
         public DbSet<Produto> produtos { get; set; }
-
+        public DbSet<Estoque> estoques { get; set; }
     }
 }

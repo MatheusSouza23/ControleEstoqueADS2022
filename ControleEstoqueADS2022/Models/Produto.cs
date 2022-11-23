@@ -32,6 +32,6 @@ namespace ControleEstoqueADS2022.Models
         [DisplayFormat(DataFormatString = "{0:C2}")]
         public float preço { get; set; }
 
-        public ICollection<CompraProduto> Compras { get; set; }
+        public ICollection<Estoque> estoques { get; set; }
     }
 }
