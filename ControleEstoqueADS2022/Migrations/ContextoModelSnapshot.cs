@@ -17,10 +17,10 @@ namespace ControleEstoqueADS2022.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.9")
+                .HasAnnotation("ProductVersion", "7.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("ControleEstoqueADS2022.Models.Cliente", b =>
                 {
@@ -28,7 +28,7 @@ namespace ControleEstoqueADS2022.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<string>("cidade")
                         .IsRequired()
@@ -57,7 +57,10 @@ namespace ControleEstoqueADS2022.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int?>("Estoqueid")
+                        .HasColumnType("int");
 
                     b.Property<int>("clienteid")
                         .HasColumnType("int");
@@ -73,11 +76,44 @@ namespace ControleEstoqueADS2022.Migrations
 
                     b.HasKey("id");
 
+                    b.HasIndex("Estoqueid");
+
                     b.HasIndex("clienteid");
 
                     b.HasIndex("produtoid");
 
                     b.ToTable("Compra");
+                });
+
+            modelBuilder.Entity("ControleEstoqueADS2022.Models.Estoque", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int?>("Produtoid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("descricao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("idfornecedor")
+                        .HasColumnType("int");
+
+                    b.Property<int>("quantidade")
+                        .HasColumnType("int");
+
+                    b.Property<float>("valor")
+                        .HasColumnType("real");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("Produtoid");
+
+                    b.ToTable("Estoques");
                 });
 
             modelBuilder.Entity("ControleEstoqueADS2022.Models.Fornecedor", b =>
@@ -86,7 +122,7 @@ namespace ControleEstoqueADS2022.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<int>("CNPJ")
                         .HasColumnType("int");
@@ -115,7 +151,7 @@ namespace ControleEstoqueADS2022.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<int?>("Fornecedorid")
                         .HasColumnType("int");
@@ -145,6 +181,10 @@ namespace ControleEstoqueADS2022.Migrations
 
             modelBuilder.Entity("ControleEstoqueADS2022.Models.CompraProduto", b =>
                 {
+                    b.HasOne("ControleEstoqueADS2022.Models.Estoque", null)
+                        .WithMany("Compras")
+                        .HasForeignKey("Estoqueid");
+
                     b.HasOne("ControleEstoqueADS2022.Models.Cliente", "cliente")
                         .WithMany("Compras")
                         .HasForeignKey("clienteid")
@@ -152,7 +192,7 @@ namespace ControleEstoqueADS2022.Migrations
                         .IsRequired();
 
                     b.HasOne("ControleEstoqueADS2022.Models.Produto", "produto")
-                        .WithMany("Compras")
+                        .WithMany()
                         .HasForeignKey("produtoid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -160,6 +200,13 @@ namespace ControleEstoqueADS2022.Migrations
                     b.Navigation("cliente");
 
                     b.Navigation("produto");
+                });
+
+            modelBuilder.Entity("ControleEstoqueADS2022.Models.Estoque", b =>
+                {
+                    b.HasOne("ControleEstoqueADS2022.Models.Produto", null)
+                        .WithMany("estoques")
+                        .HasForeignKey("Produtoid");
                 });
 
             modelBuilder.Entity("ControleEstoqueADS2022.Models.Produto", b =>
@@ -174,6 +221,11 @@ namespace ControleEstoqueADS2022.Migrations
                     b.Navigation("Compras");
                 });
 
+            modelBuilder.Entity("ControleEstoqueADS2022.Models.Estoque", b =>
+                {
+                    b.Navigation("Compras");
+                });
+
             modelBuilder.Entity("ControleEstoqueADS2022.Models.Fornecedor", b =>
                 {
                     b.Navigation("Produtos");
@@ -181,7 +233,7 @@ namespace ControleEstoqueADS2022.Migrations
 
             modelBuilder.Entity("ControleEstoqueADS2022.Models.Produto", b =>
                 {
-                    b.Navigation("Compras");
+                    b.Navigation("estoques");
                 });
 #pragma warning restore 612, 618
         }

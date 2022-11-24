@@ -5,8 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ControleEstoqueADS2022.Migrations
 {
+    /// <inheritdoc />
     public partial class init : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -65,6 +67,28 @@ namespace ControleEstoqueADS2022.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Estoques",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    quantidade = table.Column<int>(type: "int", nullable: false),
+                    descricao = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    valor = table.Column<float>(type: "real", nullable: false),
+                    idfornecedor = table.Column<int>(type: "int", nullable: false),
+                    Produtoid = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Estoques", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Estoques_Produto_Produtoid",
+                        column: x => x.Produtoid,
+                        principalTable: "Produto",
+                        principalColumn: "id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Compra",
                 columns: table => new
                 {
@@ -73,7 +97,8 @@ namespace ControleEstoqueADS2022.Migrations
                     clienteid = table.Column<int>(type: "int", nullable: false),
                     produtoid = table.Column<int>(type: "int", nullable: false),
                     quantidade = table.Column<float>(type: "real", nullable: false),
-                    valor = table.Column<float>(type: "real", nullable: false)
+                    valor = table.Column<float>(type: "real", nullable: false),
+                    Estoqueid = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -84,6 +109,11 @@ namespace ControleEstoqueADS2022.Migrations
                         principalTable: "Clientes",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Compra_Estoques_Estoqueid",
+                        column: x => x.Estoqueid,
+                        principalTable: "Estoques",
+                        principalColumn: "id");
                     table.ForeignKey(
                         name: "FK_Compra_Produto_produtoid",
                         column: x => x.produtoid,
@@ -98,9 +128,19 @@ namespace ControleEstoqueADS2022.Migrations
                 column: "clienteid");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Compra_Estoqueid",
+                table: "Compra",
+                column: "Estoqueid");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Compra_produtoid",
                 table: "Compra",
                 column: "produtoid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Estoques_Produtoid",
+                table: "Estoques",
+                column: "Produtoid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Produto_Fornecedorid",
@@ -108,6 +148,7 @@ namespace ControleEstoqueADS2022.Migrations
                 column: "Fornecedorid");
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
@@ -115,6 +156,9 @@ namespace ControleEstoqueADS2022.Migrations
 
             migrationBuilder.DropTable(
                 name: "Clientes");
+
+            migrationBuilder.DropTable(
+                name: "Estoques");
 
             migrationBuilder.DropTable(
                 name: "Produto");

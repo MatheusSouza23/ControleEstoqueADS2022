@@ -1,0 +1,30 @@
+﻿.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerIndex {
+    background-color: lightgray;
+    height: 25rem;
+    width: 20rem;
+    border-radius: 50px;
+    margin-top: 3rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+    border:0.3px solid
+}
+
+.titulo {
+    text-align: center;
+    font-size: 35px;
+    margin-left:15px;
+    margin-top:15px;
+    margin-bottom:25px;
+}
+
+.links {
+    font-size: 20px;
+    margin-bottom:0.5rem;
+    text-align:center;
+}
