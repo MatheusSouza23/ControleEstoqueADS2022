@@ -9,22 +9,22 @@ using ControleEstoqueADS2022.Models;
 
 namespace ControleEstoqueADS2022.Controllers
 {
-    public class CompraProdutosController : Controller
+    public class ComprasProdutosController : Controller
     {
         private readonly Contexto _context;
 
-        public CompraProdutosController(Contexto context)
+        public ComprasProdutosController(Contexto context)
         {
             _context = context;
         }
 
-        // GET: CompraProdutoes
+        // GET: ComprasProdutos
         public async Task<IActionResult> Index()
         {
               return View(await _context.compras.ToListAsync());
         }
 
-        // GET: CompraProdutoes/Details/5
+        // GET: ComprasProdutos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.compras == null)
@@ -42,13 +42,13 @@ namespace ControleEstoqueADS2022.Controllers
             return View(compraProduto);
         }
 
-        // GET: CompraProdutoes/Create
+        // GET: ComprasProdutos/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: CompraProdutoes/Create
+        // POST: ComprasProdutos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -64,7 +64,7 @@ namespace ControleEstoqueADS2022.Controllers
             return View(compraProduto);
         }
 
-        // GET: CompraProdutoes/Edit/5
+        // GET: ComprasProdutos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.compras == null)
@@ -80,7 +80,7 @@ namespace ControleEstoqueADS2022.Controllers
             return View(compraProduto);
         }
 
-        // POST: CompraProdutoes/Edit/5
+        // POST: ComprasProdutos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -115,7 +115,7 @@ namespace ControleEstoqueADS2022.Controllers
             return View(compraProduto);
         }
 
-        // GET: CompraProdutoes/Delete/5
+        // GET: ComprasProdutos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.compras == null)
@@ -133,7 +133,7 @@ namespace ControleEstoqueADS2022.Controllers
             return View(compraProduto);
         }
 
-        // POST: CompraProdutoes/Delete/5
+        // POST: ComprasProdutos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

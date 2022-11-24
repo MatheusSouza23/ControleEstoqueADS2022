@@ -7,7 +7,7 @@ namespace ControleEstoqueADS2022.Models
     public class Estoque
     {
         [key]
-        [Required(ErrorMessage = "ID é obrigatório")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "ID: ")]
         public int id { get; set; }
 
