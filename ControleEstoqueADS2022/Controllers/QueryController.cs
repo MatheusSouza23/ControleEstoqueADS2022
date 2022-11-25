@@ -1,4 +1,5 @@
 ﻿using ControleEstoqueADS2022.Models;
+using ControleEstoqueADS2022.Models.Consulta;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControleEstoqueADS2022.Controllers
@@ -7,7 +8,7 @@ namespace ControleEstoqueADS2022.Controllers
     {
         private readonly Contexto contexto;
 
-        public QueryController (Contexto context) 
+        public QueryController(Contexto context)
         {
             contexto = context;
         }
@@ -21,7 +22,7 @@ namespace ControleEstoqueADS2022.Controllers
                     .ThenBy(nom => nom.nome).ToList();
             }
             else
-            {  
+            {
                 lista = contexto.fornecedores.Where(n => n.nome.Contains(nome))
                     .OrderBy(e => e.estado)
                     .ThenBy(nom => nom.nome)

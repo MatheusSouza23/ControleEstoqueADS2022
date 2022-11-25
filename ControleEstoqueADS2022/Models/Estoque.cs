@@ -6,6 +6,9 @@ namespace ControleEstoqueADS2022.Models
     [Table("Estoques")]
     public class Estoque
     {
+        internal object estoques;
+        internal object estoque;
+
         [key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "ID: ")]

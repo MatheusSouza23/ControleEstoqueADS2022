@@ -11,6 +11,10 @@ namespace ControleEstoqueADS2022.Models
         [Display(Name = "ID: ")]
         public int id { get; set; }
 
+        [Required(ErrorMessage = "o Nome do produto é obrigatório")]
+        [Display(Name = "Descricao: ")]
+        public string descricao { get; set; }
+
         [Required(ErrorMessage = "Cliente é obrigatório...")]
         [Display(Name = "Cliente: ")]
         public Cliente cliente { get; set; }

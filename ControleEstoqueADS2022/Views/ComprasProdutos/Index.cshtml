@@ -17,17 +17,22 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.descricao)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.quantidade)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.valor)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.descricao)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.quantidade)
             </td>

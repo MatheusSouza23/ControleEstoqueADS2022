@@ -54,7 +54,7 @@ namespace ControleEstoqueADS2022.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,quantidade,valor")] CompraProduto compraProduto)
+        public async Task<IActionResult> Create([Bind("id, descricao, quantidade,valor")] CompraProduto compraProduto)
         {
             if (ModelState.IsValid)
             {
