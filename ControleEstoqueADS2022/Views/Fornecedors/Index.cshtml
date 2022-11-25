@@ -11,7 +11,15 @@
 
 <h1>Lista de fornecedores</h1>
 
-<input class="btn" type="button" value="Adicionar novo fornecedor" onclick="location.href='@Url.Action("Create", "Fornecedors")'" />
+<div style="display:flex; gap:20px">
+
+    <div class="containerPesquisa">
+        <a href="/Query/Pesquisa"><img class="pesquisa" src="./images/710082.png" /></a>
+    </div>
+
+    <input class="btn" type="button" value="Adicionar novo fornecedor" onclick="location.href='@Url.Action("Create", "Fornecedors")'" />
+
+</div>
 
 <table class="table">
     <thead>

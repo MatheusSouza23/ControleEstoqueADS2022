@@ -15,10 +15,7 @@ namespace ControleEstoqueADS2022.Models
         [Display(Name = "Cliente: ")]
         public Cliente cliente { get; set; }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 47031d127ddde08c3bf1e469a7901ad3d23dcf3c
         [Display(Name = "Quantidade")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public float quantidade { get; set; }
