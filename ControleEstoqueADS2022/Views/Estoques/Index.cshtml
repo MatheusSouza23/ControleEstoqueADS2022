@@ -5,11 +5,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<head>
+    <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+</head>
+
+
 <h1>Estoque de Produtos</h1>
 
-<input type="button" value="Adicionar novo Produto" onclick="location.href='@Url.Action("Create", "Estoques")'" />
+
+<input class="btn" type="button" value="Adicionar novo produto no estoque" onclick="location.href='@Url.Action("Create", "Estoques")'" />
 
 <table class="table">
+    
     <thead>
         <tr>
             <th>

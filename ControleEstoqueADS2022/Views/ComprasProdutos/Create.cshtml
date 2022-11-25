@@ -5,9 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
-
-<h4>CompraProduto</h4>
+<h4>Adcionar compra de produtos</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -20,7 +18,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="valor" class="control-label"></label>
-                <input asp-for="valor" class="form-control" />
+                <input style="margin-bottom:1rem" asp-for="valor" class="form-control" />
                 <span asp-validation-for="valor" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -31,7 +29,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar ao index</a>
 </div>
 
 @section Scripts {
