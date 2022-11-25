@@ -15,10 +15,6 @@ namespace ControleEstoqueADS2022.Models
         [Display(Name = "Cliente: ")]
         public Cliente cliente { get; set; }
 
-        [Required(ErrorMessage = "Produto é obrigatório...")]
-        [Display(Name = "Produto: ")]
-        public Produto produto { get; set; }
-
         [Display(Name = "Quantidade")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public float quantidade { get; set; }
