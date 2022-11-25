@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ControleEstoqueADS2022.Models;
+using Microsoft.Build.Logging;
 
 namespace ControleEstoqueADS2022.Controllers
 {
