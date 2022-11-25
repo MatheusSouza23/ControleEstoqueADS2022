@@ -5,9 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
-
-<h4>Fornecedor</h4>
+<h4>Adicionar fornecedor</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -30,7 +28,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="estado" class="control-label"></label>
-                <select asp-for="estado" class="form-control"
+                <select style="margin-bottom:1rem" asp-for="estado" class="form-control"
                         asp-items="ViewBag.estado"></select>
                 <span asp-validation-for="estado" class="text-danger"></span>
             </div>
@@ -42,7 +40,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar ao index</a>
 </div>
 
 @section Scripts {

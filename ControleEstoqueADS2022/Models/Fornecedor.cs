@@ -29,6 +29,6 @@ namespace ControleEstoqueADS2022.Models
         [Display(Name = "Estado: ")]
         public Estado estado { get; set; }
 
-        public ICollection<Produto> Produtos { get; set; }
+        public ICollection<Estoque> Estoques { get; set; }
     }
 }
